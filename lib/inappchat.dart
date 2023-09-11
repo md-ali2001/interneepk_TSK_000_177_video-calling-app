@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:zego_zimkit/compnents/conversation_list.dart';
 import 'package:zego_zimkit/pages/message_list_page.dart';
 
+import 'home_page_popup.dart';
+
 
 
 class ZIMKitDemoHomePage extends StatelessWidget {
@@ -18,6 +20,7 @@ onWillPop: () async => false,
 child: Scaffold(
 appBar: AppBar(
 title: const Text('Conversations'),
+  actions: const [HomePagePopup()],
 
 ),
 body: ZIMKitConversationListView(

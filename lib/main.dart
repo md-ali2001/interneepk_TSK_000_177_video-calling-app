@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:videocalling2/zego%20credentials.dart';
 import 'package:zego_uikit_prebuilt_call/zego_uikit_prebuilt_call.dart';
 import 'package:zego_zimkit/services/services.dart';
 
 import 'inappchat.dart';
 
-void main() {
-  ZIMKit().init(
-    appID: , // your appid
-    appSign:, // your appSign
+void main() async{
+  await ZIMKit().init(
+    appID: appid, // your appid
+    appSign:appsign, // your appSign
   );
-  ZIMKit().connectUser(id: '4', name: "2");
+WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -53,7 +54,12 @@ class _HomeScreen extends State<HomeScreen> {
                 TextFormField(controller: idcontroller),
                ElevatedButton(
 
-                  onPressed: () { Navigator.of(context).push(
+
+                  onPressed: () async{
+                  await  ZIMKit().connectUser(id: idcontroller.text, name: namecontroller.text);
+
+
+                    Navigator.of(context).pushReplacement(
     MaterialPageRoute(
     builder: (context) => const ZIMKitDemoHomePage(),
     ));
